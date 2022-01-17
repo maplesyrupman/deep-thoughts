@@ -37,3 +37,33 @@ export const ADD_FRIEND = gql`
         }
     }
 `
+
+export const ADD_THOUGHT = gql`
+    mutation addThought($thoughtText: String!) {
+        addThought(thoughtText: $thoughtText) {
+            _id
+            thoughtText
+            createdAt
+            username
+            reactionCount
+            reactions {
+                _id
+            }
+        }
+    }
+`
+
+export const ADD_REACTION = gql`
+    mutation addReaction($reactionBody: String!, $thoughtId: ID!) {
+        addReaction(reactionBody: $reactionBody, thoughtId: $thoughtId) {
+            _id
+            reactionCount
+            reactions {
+                _id
+                reactionBody
+                createdAt
+                username
+            }
+        }
+    }
+`
